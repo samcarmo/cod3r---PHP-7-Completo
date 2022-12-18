@@ -3,7 +3,7 @@ const express = require('express')
 const app = express()
 
 app.use(express.static('.'))
-app.unsubscribe(bodyParser.urlencoded({ extended: true }))
+app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 
 const multer = require('multer')
@@ -26,6 +26,13 @@ app.post('/upload', (req, res) => {
         }
 
         res.end('Concluído com sucesso.')
+    })
+})
+
+app.post('/formulario', (req, res) => {
+    res.send({
+        ...req.body,
+        id: 1
     })
 })
 
